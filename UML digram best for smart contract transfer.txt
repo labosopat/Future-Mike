@@ -1,0 +1,38 @@
+UML digram best
+
+
+@startuml
+start
+:User A initiates communication by broadcasting the book in the blockchain e-library smart contract;
+:Smart contract notifies other users that book can be borrowed directly;
+
+:Interested Users willing to borrow the book respond to the message;
+:Responses placed in a pool on first-come, first-serve basis;
+
+repeat
+    :Select first user from queue;
+    :Communicate with selected user for book transfer details;
+    if (Agreement reached?) then (Yes)
+        :Proceed to book transfer;
+    else (No)
+        :Move to next user in queue;
+    endif
+repeat while (Agreement not reached?)
+
+:User A and responder meet;
+:User A transfers book to responder;
+:Responder verifies book condition;
+
+if (Book condition good?) then (Yes) 
+    
+    stop
+else (No)
+    :Book rejected;
+    if (Book rejected many times?) then (Yes) 
+        :User A returns book to library;
+        stop
+    else (No)
+        :User A returns to queue;
+    endif
+endif
+@enduml
